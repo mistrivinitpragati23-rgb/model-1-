@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+
+<body bgcolor="lightblue">
+
+<h1 align="center">Registration Form</h1>
+
+<form>
+
+<table border="1" align="center" cellpadding="8" width="700">
+
+<tr>
+<td>First Name :</td>
+<td>
+<input type="text"
+name="fname"
+placeholder="Enter First Name"
+required
+minlength="3">
+</td>
+</tr>
+
+<tr>
+<td>Last Name :</td>
+<td>
+<input type="text"
+name="lname"
+placeholder="Enter Last Name"
+required
+minlength="3">
+</td>
+</tr>
+
+<tr>
+<td>Contact No :</td>
+<td>
+<input type="tel"
+name="contact"
+placeholder="Enter Contact Number"
+pattern="[0-9]{10}"
+required>
+</td>
+</tr>
+
+<tr>
+<td>Landline No :</td>
+<td>
+<input type="tel"
+name="landline"
+placeholder="079-123456">
+</td>
+</tr>
+
+<tr>
+<td>Email :</td>
+<td>
+<input type="email"
+name="email"
+placeholder="Enter Your Email ID"
+required>
+</td>
+</tr>
+
+<tr>
+<td>Password :</td>
+<td>
+<input type="password"
+name="password"
+placeholder="Enter Password"
+required
+minlength="6">
+</td>
+</tr>
+
+<tr>
+<td>Date of Birth :</td>
+<td>
+<input type="date"
+name="dob"
+required>
+</td>
+</tr>
+
+<tr>
+<td>Age :</td>
+<td>
+<input type="number"
+name="age"
+placeholder="Enter Age"
+min="1"
+max="100"
+required>
+</td>
+</tr>
+
+<tr>
+<td>Gender :</td>
+<td>
+<input type="radio" name="gender" required> Male
+<input type="radio" name="gender"> Female
+<input type="radio" name="gender"> Other
+</td>
+</tr>
+
+<tr>
+<td>Address :</td>
+<td>
+<textarea rows="4" cols="40"
+name="address"
+required>
+</textarea>
+</td>
+</tr>
+
+<tr>
+<td>City :</td>
+<td>
+<select required>
+<option value="">Select City</option>
+<option>Ahmedabad</option>
+<option>Surat</option>
+<option>Vadodara</option>
+<option>Rajkot</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Pincode :</td>
+<td>
+<input type="text"
+name="pincode"
+pattern="[0-9]{6}"
+placeholder="Enter Pincode"
+required>
+</td>
+</tr>
+
+<tr>
+<td>Admission Date :</td>
+<td>
+<input type="date"
+name="admissiondate"
+required>
+</td>
+</tr>
+
+<tr>
+<td>Website Link :</td>
+<td>
+<input type="url"
+name="website"
+placeholder="https://example.com">
+</td>
+</tr>
+
+<tr>
+<td>Favorite Color :</td>
+<td>
+<input type="color"
+name="color">
+</td>
+</tr>
+
+<tr>
+<td>Upload File :</td>
+<td>
+<input type="file"
+required>
+</td>
+</tr>
+
+<tr>
+<td align="center" colspan="2">
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+</td>
+</tr>
+
+</table>
+
+</form>
+
+</body>
+</html>
