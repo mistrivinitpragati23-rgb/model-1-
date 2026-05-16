@@ -1,35 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Shopping Cart</title>
-    <link rel="stylesheet" href="stlye.css">
+    <title>My Shopping Cart - Student Food Corner</title>
+    <!-- Link to our custom CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- jQuery for loading header/footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    <main>
-        <h2>Your Shopping Cart</h2>
-        <table style="width: 100%; margin-top: 20px; background: white; padding: 20px; border-radius: 8px; text-align: left; border-collapse: collapse; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-            <tr style="background: #eee;">
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-            </tr>
-            <tr>
-                <td>Classic Beef Burger</td>
-                <td>200</td>
-                <td>2</td>
-                <td>400</td>
-            </tr>
+    <!-- Header Placeholder -->
+    <div id="header-area"></div>
+
+    <div class="container">
+        <h2 class="page-title">🛒 Your Shopping Cart</h2>
+        <p class="subtitle">Review your selected items before proceeding to payment.</p>
+        <hr>
+        
+        <!-- Cart Table -->
+        <table class="custom-cart-table">
+            <thead>
+                <tr>
+                    <th>Food Image</th>
+                    <th>Item Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <!-- JavaScript will inject the rows into this tbody -->
+            <tbody id="cart-body-items">
+                <!-- Example of what JS will generate: -->
+                <!--
+                <tr>
+                    <td><img src="..." class="cart-img"></td>
+                    <td><b>Special Veg Burger</b></td>
+                    <td>₹120</td>
+                    <td>
+                        <button class="qty-btn">-</button>
+                        <span class="qty-text">2</span>
+                        <button class="qty-btn">+</button>
+                    </td>
+                    <td class="row-total">₹240</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+                -->
+            </tbody>
         </table>
-        <div style="text-align: right; margin-top: 20px;">
-            <h3>Subtotal: $400.00</h3>
-            <a href="payment.html" class="btn">Proceed to Payment</a>
+
+        <!-- Order Summary Box -->
+        <div class="cart-summary-box">
+            <h3>Order Summary</h3>
+            <hr>
+            <p>Delivery Charges: <b>₹40</b></p>
+            <h2 id="final-total" class="grand-total-text">Final Amount: ₹0</h2>
+            <br>
+            <div class="cart-buttons">
+                <a href="products.html" class="my-btn secondary-btn">← Continue Shopping</a>
+                <a href="payment.html" class="my-btn primary-btn">Proceed to Payment →</a>
+            </div>
         </div>
-    </main>
-    <div id="footer-placeholder"></div>
+
+        <!-- Clear floating elements -->
+        <div class="clear-float"></div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-area"></div>
 </body>
 </html>
