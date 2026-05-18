@@ -1,72 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Shopping Cart - Student Food Corner</title>
-    <!-- Link to our custom CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- jQuery for loading header/footer -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
+    <style>
+        .qty-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .qty-btn:hover {
+            background-color: #e2e6ea;
+        }
+    </style>
 </head>
-<body>
-    <!-- Header Placeholder -->
-    <div id="header-area"></div>
-
-    <div class="container">
-        <h2 class="page-title">🛒 Your Shopping Cart</h2>
-        <p class="subtitle">Review your selected items before proceeding to payment.</p>
-        <hr>
-        
-        <!-- Cart Table -->
-        <table class="custom-cart-table">
-            <thead>
-                <tr>
-                    <th>Food Image</th>
-                    <th>Item Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <!-- JavaScript will inject the rows into this tbody -->
-            <tbody id="cart-body-items">
-                <!-- Example of what JS will generate: -->
-                <!--
-                <tr>
-                    <td><img src="..." class="cart-img"></td>
-                    <td><b>Special Veg Burger</b></td>
-                    <td>₹120</td>
-                    <td>
-                        <button class="qty-btn">-</button>
-                        <span class="qty-text">2</span>
-                        <button class="qty-btn">+</button>
-                    </td>
-                    <td class="row-total">₹240</td>
-                    <td><button class="remove-btn">Remove</button></td>
-                </tr>
-                -->
-            </tbody>
-        </table>
-
-        <!-- Order Summary Box -->
-        <div class="cart-summary-box">
-            <h3>Order Summary</h3>
+<body style="background-color: #0f12df;">
+    <div class="header"></div>
+    <div id="header-placeholder"></div>
+    <div id="header-area"></div>   
+    <div class="container custom-cart-container mt-5 mb-5 bg-white p-4 rounded shadow">
+        <h2 class="page-title text-danger fw-bold">🛒 Your Shopping Cart</h2>
+        <p class="subtitle text-muted">Review your selected items before proceeding to payment.</p>
+        <hr>     
+        <div class="table-responsive">
+            <table class="custom-cart-table table table-hover align-middle shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Food Image</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-body-items">
+                    <tr>
+                        <td>
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Pizza" class="cart-img img-thumbnail" style="width: 100px;">
+                        </td>
+                        <td class="item-name fs-5"><b>Margherita Pizza</b></td>
+                        <td class="fs-5">₹<span class="item-price">250</span></td>
+                        <td>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <button class="qty-btn qty-minus">-</button>
+                                <span class="qty-text mx-3 fs-5">1</span>
+                                <button class="qty-btn qty-plus">+</button>
+                            </div>
+                        </td>
+                        <td class="text-danger fw-bold fs-5">₹<span class="row-total">250</span></td>
+                        <td>
+                            <button type="button" class="btn btn-danger px-4 btn-remove" data-bs-toggle="modal" data-bs-target="#removeConfirmModal">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger" class="cart-img img-thumbnail" style="width: 100px;">
+                        </td>
+                        <td class="item-name fs-5"><b>Double Cheese Burger</b></td>
+                        <td class="fs-5">₹<span class="item-price">150</span></td>
+                        <td>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <button class="qty-btn qty-minus">-</button>
+                                <span class="qty-text mx-3 fs-5">2</span>
+                                <button class="qty-btn qty-plus">+</button>
+                            </div>
+                        </td>
+                        <td class="text-danger fw-bold fs-5">₹<span class="row-total">300</span></td>
+                        <td>
+                            <button type="button" class="btn btn-danger px-4 btn-remove" data-bs-toggle="modal" data-bs-target="#removeConfirmModal">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://images.unsplash.com/photo-1621996311239-531f0e56c124?w=200" alt="Pasta" class="cart-img img-thumbnail" style="width: 100px;">
+                        </td>
+                        <td class="item-name fs-5"><b>Creamy White Pasta</b></td>
+                        <td class="fs-5">₹<span class="item-price">200</span></td>
+                        <td>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <button class="qty-btn qty-minus">-</button>
+                                <span class="qty-text mx-3 fs-5">1</span>
+                                <button class="qty-btn qty-plus">+</button>
+                            </div>
+                        </td>
+                        <td class="text-danger fw-bold fs-5">₹<span class="row-total">200</span></td>
+                        <td>
+                            <button type="button" class="btn btn-danger px-4 btn-remove" data-bs-toggle="modal" data-bs-target="#removeConfirmModal">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="cart-summary-box shadow-sm mt-4 p-3 border rounded">
+            <h3 class="fw-bold border-bottom pb-2">Order Summary</h3>
+            <div class="d-flex justify-content-between mt-3">
+                <span class="fs-5">Subtotal:</span>
+                <span class="fs-5 fw-bold">₹<span id="subtotal-amount">750</span></span>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+                <span class="fs-5">Delivery Charges:</span>
+                <span class="fs-5 fw-bold text-success">+ ₹<span id="delivery-amount">10</span></span>
+            </div>
             <hr>
-            <p>Delivery Charges: <b>₹40</b></p>
-            <h2 id="final-total" class="grand-total-text">Final Amount: ₹0</h2>
-            <br>
-            <div class="cart-buttons">
-                <a href="products.html" class="my-btn secondary-btn">← Continue Shopping</a>
-                <a href="payment.html" class="my-btn primary-btn">Proceed to Payment →</a>
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="m-0">Final Amount:</h4>
+                <h2 class="grand-total-text text-danger m-0 fw-bold">₹<span id="final-total">760</span></h2>
+            </div>
+            
+            <div class="cart-buttons mt-4 d-flex justify-content-between gap-2">
+                <a href="products.html" class="btn btn-outline-secondary w-50 py-2">← Continue Shopping</a>
+                <a href="payment.html" class="btn btn-success w-50 py-2 fw-bold">Proceed to Payment →</a>
             </div>
         </div>
-
-        <!-- Clear floating elements -->
-        <div class="clear-float"></div>
+        <div class="clearfix"></div>
     </div>
-
-    <!-- Footer Placeholder -->
+    <div class="modal fade" id="removeConfirmModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title fw-bold" id="removeModalLabel">Confirm Removal</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <h4 class="text-dark">Are you sure you want to remove this item?</h4>
+                    <p class="text-muted">This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger px-4" id="confirm-remove-btn" data-bs-dismiss="modal">Yes, Remove it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+    <div id="footer-placeholder"></div>
     <div id="footer-area"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartBody = document.getElementById('cart-body-items');
+            const subtotalEl = document.getElementById('subtotal-amount');
+            const finalTotalEl = document.getElementById('final-total');
+            const deliveryCharge = parseFloat(document.getElementById('delivery-amount').innerText);
+            let rowToBeRemoved = null;
+            function updateCartTotals() {
+                let newSubtotal = 0;
+                const rows = document.querySelectorAll('#cart-body-items tr');
+                rows.forEach(row => {
+                    const rowTotal = parseFloat(row.querySelector('.row-total').innerText);
+                    newSubtotal += rowTotal;
+                });
+                subtotalEl.innerText = newSubtotal;
+                if (newSubtotal === 0) {
+                    finalTotalEl.innerText = "0";
+                    document.getElementById('delivery-amount').innerText = "0";
+                } else {
+                    document.getElementById('delivery-amount').innerText = "10"; 
+                    finalTotalEl.innerText = (newSubtotal + deliveryCharge);
+                }
+            }
+            cartBody.addEventListener('click', function(e) {
+                const target = e.target;
+                const row = target.closest('tr');
+                if (!row) return;
+                const price = parseFloat(row.querySelector('.item-price').innerText);
+                let qtyElement = row.querySelector('.qty-text');
+                let currentQty = parseInt(qtyElement.innerText);
+                let rowTotalElement = row.querySelector('.row-total');
+                if (target.classList.contains('qty-plus')) {
+                    currentQty++;
+                    qtyElement.innerText = currentQty;
+                    rowTotalElement.innerText = price * currentQty;
+                    updateCartTotals();
+                }
+                if (target.classList.contains('qty-minus')) {
+                    if (currentQty > 1) { 
+                        currentQty--;
+                        qtyElement.innerText = currentQty;
+                        rowTotalElement.innerText = price * currentQty;
+                        updateCartTotals();
+                    }
+                }
+                if (target.classList.contains('btn-remove')) {
+                    rowToBeRemoved = row;
+                }
+            });
+            document.getElementById('confirm-remove-btn').addEventListener('click', function() {
+                if (rowToBeRemoved) {
+                    rowToBeRemoved.remove();
+                    updateCartTotals();      
+                    rowToBeRemoved = null;  
+                }
+            });
+        });
+    </script>
 </body>
 </html>
