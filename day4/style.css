@@ -1,6 +1,6 @@
 :root { 
-    --primary: #eb1426;
-    --dark: #3c5b64;
+    --primary: #e00f0f;
+    --dark: #f99a0b;
     --light: #f1f2f6;
  }
 
@@ -12,7 +12,7 @@
 
 header ul li a{
     text-decoration: none;
-    color: rgb(45, 221, 14);
+    color: rgb(218, 230, 216);
     margin: 0 15px; 
     font-weight: bold ;
 }
@@ -31,7 +31,7 @@ header ul {
      }
 header, footer {
     background: var(--dark);
-    color: rgb(240, 0, 0);
+    color: rgb(31, 22, 22);
     padding: 1rem;
     text-align: center; 
     }

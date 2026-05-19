@@ -14,9 +14,24 @@
             border: 1px solid #ccc;
             background-color: #f8f9fa;
             font-weight: bold;
+            transition: all 0.2s ease-in-out; 
         }
         .qty-btn:hover {
             background-color: #e2e6ea;
+            transform: scale(1.15); 
+        }
+        .cart-row {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .cart-row.fade-out {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .btn {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -41,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody id="cart-body-items">
-                    <tr>
+                    <tr class="cart-row">
                         <td>
                             <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Pizza" class="cart-img img-thumbnail" style="width: 100px;">
                         </td>
@@ -59,7 +74,7 @@
                             <button type="button" class="btn btn-danger px-4 btn-remove" data-bs-toggle="modal" data-bs-target="#removeConfirmModal">Remove</button>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="cart-row">
                         <td>
                             <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger" class="cart-img img-thumbnail" style="width: 100px;">
                         </td>
@@ -77,7 +92,7 @@
                             <button type="button" class="btn btn-danger px-4 btn-remove" data-bs-toggle="modal" data-bs-target="#removeConfirmModal">Remove</button>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="cart-row">
                         <td>
                             <img src="https://images.unsplash.com/photo-1621996311239-531f0e56c124?w=200" alt="Pasta" class="cart-img img-thumbnail" style="width: 100px;">
                         </td>
@@ -116,7 +131,7 @@
             
             <div class="cart-buttons mt-4 d-flex justify-content-between gap-2">
                 <a href="products.html" class="btn btn-outline-secondary w-50 py-2">← Continue Shopping</a>
-                <a href="payment.html" class="btn btn-success w-50 py-2 fw-bold">Proceed to Payment →</a>
+                <a href="payment.html" id="checkout-btn" class="btn btn-success w-50 py-2 fw-bold">Proceed to Payment →</a>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -151,6 +166,7 @@
             const finalTotalEl = document.getElementById('final-total');
             const deliveryCharge = parseFloat(document.getElementById('delivery-amount').innerText);
             let rowToBeRemoved = null;
+
             function updateCartTotals() {
                 let newSubtotal = 0;
                 const rows = document.querySelectorAll('#cart-body-items tr');
@@ -164,23 +180,26 @@
                     document.getElementById('delivery-amount').innerText = "0";
                 } else {
                     document.getElementById('delivery-amount').innerText = "10"; 
-                    finalTotalEl.innerText = (newSubtotal + deliveryCharge);
+                    finalTotalEl.innerText = (newSubtotal + 10);
                 }
             }
+
             cartBody.addEventListener('click', function(e) {
                 const target = e.target;
                 const row = target.closest('tr');
                 if (!row) return;
+                
                 const price = parseFloat(row.querySelector('.item-price').innerText);
                 let qtyElement = row.querySelector('.qty-text');
                 let currentQty = parseInt(qtyElement.innerText);
                 let rowTotalElement = row.querySelector('.row-total');
+                
                 if (target.classList.contains('qty-plus')) {
                     currentQty++;
                     qtyElement.innerText = currentQty;
                     rowTotalElement.innerText = price * currentQty;
                     updateCartTotals();
-                }
+                }                
                 if (target.classList.contains('qty-minus')) {
                     if (currentQty > 1) { 
                         currentQty--;
@@ -195,11 +214,33 @@
             });
             document.getElementById('confirm-remove-btn').addEventListener('click', function() {
                 if (rowToBeRemoved) {
-                    rowToBeRemoved.remove();
-                    updateCartTotals();      
-                    rowToBeRemoved = null;  
+                    rowToBeRemoved.classList.add('fade-out');
+                    setTimeout(() => {
+                        rowToBeRemoved.remove();
+                        updateCartTotals();      
+                        rowToBeRemoved = null;  
+                    }, 400); 
                 }
             });
+            const checkoutBtn = document.getElementById('checkout-btn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault(); 
+                    
+                    if (parseFloat(finalTotalEl.innerText) === 0) {
+                        alert("Your cart is empty!");
+                        return;
+                    }
+                    const btn = this;
+                    btn.innerHTML = '🔄 Processing Transaction...';
+                    btn.classList.add('disabled');
+                    btn.classList.replace('btn-success', 'btn-warning');
+                    setTimeout(() => {
+                        alert("Transaction Successful! Proceeding to Payment Gateway for ₹" + finalTotalEl.innerText);
+                        window.location.href = btn.href;
+                    }, 1500);
+                });
+            }
         });
     </script>
 </body>
