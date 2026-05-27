@@ -1,0 +1,101 @@
+/* Remove default browser margins so the layout touches the screen edges */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1; 
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #d50c0c;
+  color: white;
+  padding: 50px;
+}
+
+.content {
+  flex: 1; 
+  padding: 30px;
+  background-color: #f4f4f4;
+}
+
+header, footer {
+  background-color: #222222;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: #282c34;
+  color: white;
+  padding: 10px 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.header-logo h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #61dafb;
+}
+
+
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px; 
+  margin: 0;
+  padding: 0;
+}
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: #61dafb;
+}
+
+.login-btn {
+  background-color: #61dafb;
+  color: #282c34;
+  margin: 1px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-btn {
+  background-color: #fc3661;
+  color: #282c34;
+  margin: 1px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #4fa8c7;
+}
+.myheader ul{
+  display:flex;
+  list-style:none;
+  
+
+}
