@@ -1,86 +1,78 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function Registration() {
-  // --- STATE ---
-  // We use separate state variables for every input so the code is easy to read.
-  const [username, setUsername] = useState("");
+function Register() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
-  // --- EVENT HANDLER ---
-  // The 'e' stands for 'event' (the submission of the form).
-  const handleSubmit = (e) => {
-    // e.preventDefault() is crucial. Normal HTML forms refresh the whole page when submitted. 
-    // This stops that, allowing React to handle the data smoothly.
-    e.preventDefault(); 
+  const [error, setError] = useState("");
 
-    // Custom Validation: Check if the user typed the same password twice.
-    if (password !== confirmPassword) {
-      alert("Error: Passwords do not match!");
-      return; // The 'return' stops the function instantly so the success code below doesn't run.
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (name === "" || email === "" || password === "") {
+      setError("All fields are required");
+    } else {
+      try {
+        setError("");
+        const response = await axios.post("http://localhost:5500/signup", {
+          name,
+          email,
+          password,
+        });
+
+        // Backend returns 201 Created on successful registration
+        if (response.status === 201 || response.status === 200) {
+          alert("Registration Successful");
+          navigate("/");
+        } else {
+          setError("Registration failed");
+        }
+      } catch (err) {
+        console.error("Error connecting to backend:", err);
+        if (err.response && err.response.data && err.response.data.error) {
+          setError(err.response.data.error);
+        } else {
+          setError("Unable to connect to the backend server. Please verify it is running on port 5500.");
+        }
+      }
     }
-
-    // Success action! In a real app, this is where you would send the data to your backend.
-    alert("Registration Successful for " + username + "!");
-    
-    // Clear the form fields back to empty after a successful submission.
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
   };
 
-  // --- UI RENDER ---
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Create an Account</h2>
-      
-      {/* We attach our custom handleSubmit function to the form's onSubmit event */}
+    <div style={{ textAlign: "center", marginTop: "100px" }}>
       <form onSubmit={handleSubmit}>
-        
-        {/* CONTROLLED COMPONENTS */}
-        {/* In React, an input's 'value' is tied directly to a state variable. 
-            When the user types (onChange), we instantly update the state using e.target.value. */}
-        <p>
-          <label>Username: </label><br />
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required // Basic HTML5 validation to ensure the field isn't empty
-          />
-        </p>
+        <h2>Register Form</h2>
 
-        <p>
-          <label>Email: </label><br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </p>
+        <input
+          type="text"
+          placeholder="Enter Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <br /><br />
 
-        <p>
-          <label>Password: </label><br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </p>
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br /><br />
 
-        <p>
-          <label>Confirm Password: </label><br />
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </p>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br /><br />
+
+        <p style={{ color: "red" }}>{error}</p>
 
         <button type="submit">Register</button>
       </form>

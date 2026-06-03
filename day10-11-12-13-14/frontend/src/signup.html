@@ -1,0 +1,30 @@
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevents the page from refreshing layout
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        // Send data directly to your Express route
+        const response = await fetch('/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Crucial header for Express app.use(express.json())
+            },
+            body: JSON.stringify({ name, email, password }) // Convert values to string payload
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Success! User record created in MongoDB.');
+            console.log('Database entry details:', data.user);
+        } else {
+            alert('Backend rejected entry: ' + data.error);
+        }
+    } catch (err) {
+        console.error('Failed to communicate with API server:', err);
+        alert('Network connection error.');
+    }
+});

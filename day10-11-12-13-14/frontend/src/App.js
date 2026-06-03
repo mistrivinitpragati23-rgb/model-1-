@@ -47,7 +47,7 @@ function App() {
               </Route>
               
               {/* Standalone Route: Registration Page */}
-              <Route path="/register" element={<Registration />} />
+              <Route path="/signup" element={<Registration />} />
               
               {/* Standalone Route: API Data Fetching Page */}
               <Route path="/api-users" element={<ApiCalling />} />
