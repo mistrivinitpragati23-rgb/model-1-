@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+import Header1 from "./Header1";
 import Footer from "./Footer";
 import Counter from "./Counter";
 import Registration from "./Registration";
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="app-container">
       <BrowserRouter>
-        <Header />
+        <Header1 />
         
         <div className="main-layout">
           <Sidebar />

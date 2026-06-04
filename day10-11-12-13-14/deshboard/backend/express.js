@@ -43,7 +43,10 @@ app.get("/about", (req, res) => {
 app.get("/signup-page", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/src/signup.html"));
 });
-
+app.get("show", async (req, res) => {
+    const users = await user_model.find();
+    res.json(users);
+});
 // --- API ENDPOINTS ---
 
 // Functional Data Submission Route

@@ -15,6 +15,7 @@ function Header() {
           <li><Link to="/about">About</Link></li>
           <li><Link to="/services">Services</Link></li>
           <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/signup">signup</Link></li>
           
           {/* Added the API link right here */}
           <li><Link to="/api-users">API Data</Link></li>
