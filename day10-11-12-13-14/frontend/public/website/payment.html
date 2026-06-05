@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Checkout - Student Food Corner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        .container {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .full-width-input {
+            transition: all 0.3s ease;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: block;
+            width: 90%;
+        }
+
+        .full-width-input:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.3);
+            outline: none;
+            transform: scale(1.01);
+        }
+        .my-btn {
+            transition: all 0.3s ease;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .my-btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .my-btn:disabled {
+            background-color: #6c757d !important;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .flex-row { display: flex; gap: 15px; width: 93%; }
+        .flex-half { width: 50%; }
+        .checkout-wrapper { display: flex; gap: 30px; flex-wrap: wrap; }
+        .checkout-form-section { flex: 2; min-width: 300px; }
+        .checkout-summary-section { flex: 1; min-width: 250px; }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div id="header-placeholder"></div>
+    <div id="header-area"></div>
+
+    <div class="container">
+        <h2 class="page-title text-center">🔒 Secure Checkout</h2>
+        <p class="subtitle text-center">Please enter your payment and delivery details below.</p>
+        <hr>
+
+        <div class="checkout-wrapper">
+            <!-- Left Side: Form -->
+            <div class="checkout-form-section">
+                <h3>Billing & Delivery Information</h3>
+                
+                <form id="paymentForm" action="home.html" onsubmit="return completePayment()">
+                    
+                    <label><b>Full Name:</b></label>
+                    <input type="text" placeholder="Enter your full name" required class="full-width-input">
+
+                    <label><b>Email Address:</b></label>
+                    <input type="email" placeholder="student@example.com" required class="full-width-input">
+
+                    <label><b>Complete Delivery Address:</b></label>
+                    <textarea rows="3" placeholder="Room No, Hostel/Building Name, Street, City" required class="full-width-input"></textarea>
+
+                    <h3 style="margin-top: 25px;">Payment Details</h3>
+                    <hr>
+
+                    <label><b>Name on Card:</b></label>
+                    <input type="text" placeholder="John Doe" required class="full-width-input">
+
+                    <label><b>Card Number:</b></label>
+                    <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" required class="full-width-input" maxlength="19">
+
+                    <div class="flex-row">
+                        <div class="flex-half">
+                            <label><b>Expiry Date:</b></label>
+                            <input type="text" placeholder="MM/YY" required class="full-width-input" maxlength="5">
+                        </div>
+                        <div class="flex-half">
+                            <label><b>CVV:</b></label>
+                            <input type="password" placeholder="123" required class="full-width-input" maxlength="3">
+                        </div>
+                    </div>
+
+                    <br>
+                    <button type="submit" id="pay-btn" class="my-btn primary-btn" style="width: 100%; font-size: 20px;">
+                        Pay Now
+                    </button>
+                </form>
+            </div>
+
+            <div class="checkout-summary-section">
+                <h3>Order Quick Summary</h3>
+                <hr>
+                <p>Standard Delivery: <b>30-45 mins</b></p>
+                <p>Delivery Fee: <b>₹10</b></p>
+                <h2 id="checkout-total" class="grand-total-text" style="margin-top: 20px;">Total: ₹0</h2>
+                
+                <div style="background: #eaf2fe; padding: 15px; border-radius: 5px; margin-top: 20px; border: 1px solid #cce0ff;">
+                    <p style="margin: 0; color: #004085; font-size: 14px;">
+                        <b>🔒 Secure Payment Process</b><br>
+                        Your card details are encrypted and safe. This is a student project simulation.
+                    </p>
+                </div>
+            </div>    
+            <div class="clear-float"></div>
+        </div>
+    </div>
+    <div class="footer"></div>
+    <div id="footer-placeholder"></div>
+    <div id="footer-area"></div>
+    <script>
+        $(document).ready(function() {
+            let savedTotal = localStorage.getItem('cartTotal') || '350'; 
+            $('#checkout-total').text('Total: ₹' + savedTotal);
+        });
+        function completePayment() {
+            const btn = document.getElementById('pay-btn');
+            btn.innerHTML = '🔄 Authenticating Payment...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '✅ Payment Successful!';
+                btn.style.backgroundColor = '#28a745';
+                btn.style.color = 'white';
+                setTimeout(() => {
+                    alert("Order Placed Successfully! Your food is on the way.");
+                    window.location.href = document.getElementById('paymentForm').action;
+                }, 1000);
+
+            }, 2500);
+            return false; 
+        }
+    </script>
+</body>
+</html>

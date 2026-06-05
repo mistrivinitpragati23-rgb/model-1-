@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.html">
+    <link rel="stylesheet" href="footer.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        #heading-category-food {
+            font-size: 2.8rem;
+            color: #ff4757;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            font-weight: 600;
+        }
+        .controls-container {
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }        
+        .controls-container input, .controls-container select {
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: 1px solid #e0e0e0;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .controls-container input:focus, .controls-container select:focus {
+            border-color: #ff4757;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.2);
+        }
+        .category {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 5%;
+            max-width: 1300px;
+            margin: 0 auto 60px auto;
+        }
+        .category .item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 25px;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-align: center;
+            z-index: 1;
+        }
+        .category .item::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 5%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+            z-index: -1;
+        }
+
+        .category .item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .category .item h2 {
+            color: #ffffff;
+            margin: 0 0 8px 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+        .category .item p {
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .category .item .btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 10px rgba(255, 71, 87, 0.4);
+        }
+
+        .category .item .btn:hover {
+            background: #ff6b81;
+            transform: scale(1.08);
+        }
+        #simple-checkout-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #28a745, #218838);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4);
+            display: none;
+            z-index: 1000;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }    
+        #simple-checkout-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(40, 167, 69, 0.6);
+        }
+        #bottom button {
+            background-color: #ff4757 !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 50% !important;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: Arial, sans-serif; 
+            z-index: 999;
+        }
+        #bottom button:hover {
+            background-color: #ff6b81 !important;
+            transform: translateY(-5px) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div id="top"></div><div id="bottom"><button style="position: fixed; width: 50px; height: 50px; margin: 40% 95%; font-size: 50px;" onclick="window.location.href = '#top'">^</button></div>  
+    <h1 id="heading-category-food" style="text-align: center;">Category Food</h1>
+    
+    <div class="controls-container">
+        <input type="text" id="filter-input" placeholder="Search for food...">
+        <select id="sort-select">
+            <option value="default">Sort By</option>
+            <option value="az">A - Z</option>
+            <option value="za">Z - A</option>
+        </select>
+    </div>
+
+    <div class="category">
+        <div class="item" style="background-image: url('images/pizza.jpg');">
+            <h2>Pizza</h2>
+            <p>Delicious cheese pizza with fresh toppings.</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+        <div class="item" style="background-image: url('images/burger.jpg');">
+            <h2>Burger</h2>
+            <p>Juicy beef burger with lettuce and tomato.</p>
+            <button class="btn">Add to Cart</button>
+        </div> 
+        <div class="item" style="background-image: url('images/red-sauce-pasta-1.webp');">
+            <h2>Pasta</h2>
+            <p>Classic Italian pasta with rich tomato sauce.</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+        <div class="item" style="background-image: url('images/salad.jpg');">
+            <h2>Salad</h2>
+            <p>Fresh garden salad with a variety of vegetables.</p>
+            <button class="btn">Add to Cart</button>
+        </div> 
+        <div class="item" style="background-image: url('images/sandwich.jpg');">
+            <h2>Sandwich</h2>
+            <p>Grilled chicken sandwich with mayo and lettuce.</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+        <div class="item" style="background-image: url('images/soup.webp');">
+            <h2>Soup</h2>
+            <p>Warm and comforting vegetable soup.</p>
+            <button class="btn">Add to Cart</button>
+        </div>  
+        <div class="item" style="background-image: url('images/ice cream.webp');">
+            <h2>Ice Cream</h2>
+            <p>Creamy vanilla ice cream with chocolate syrup.</p>
+            <button class="btn">Add to Cart</button>
+        </div>     
+        <div class="item" style="background-image: url('images/fries.webp');">
+            <h2>Fries</h2>
+            <p>Crispy golden fries with a sprinkle of salt.</p>
+            <button class="btn">Add to Cart</button>
+        </div>  
+        <div class="item" style="background-image: url('images/soda.webp');">
+            <h2>Soda</h2>
+            <p>Refreshing soda with a variety of flavors.</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+        <div class="item" style="background-image: url('images/coffee.webp');">
+            <h2>Coffee</h2>
+            <p>Rich and aromatic coffee to start your day.</p>
+            <button class="btn">Add to Cart</button>
+        </div>  
+        <div class="item" style="background-image: url('images/tea.webp');">
+            <h2>Tea</h2>
+            <p>Soothing herbal tea with a hint of mint.</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+        <div class="item" style="background-image: url('images/juice.webp');">
+            <h2>Juice</h2>
+            <p>Freshly squeezed orange juice for a healthy boost.</p>
+            <button class="btn">Add to Cart</button>
+        </div>  
+        <div class="item" style="background-image: url('images/milkshake.webp');">
+            <h2>Milkshake</h2>
+            <p>Thick and creamy chocolate milkshake.</p>
+            <button class="btn">Add to Cart</button>
+        </div>  
+        <div class="item" style="background-image: url('images/cake.webp');">
+            <h2>Cake</h2>
+            <p>Delicious chocolate cake with a rich frosting.</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+    </div>
+    <button id="simple-checkout-btn">Checkout</button>
+    <div class="footer"></div>
+    <script src="script.js"></script> 
+    <script>
+        $(document).ready(function() {
+            $('#filter-input').on('keyup', function() {
+                let value = $(this).val().toLowerCase();
+                $('.category .item').filter(function() {
+                    $(this).toggle($(this).find('h2').text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+            $('#sort-select').on('change', function() {
+                let sortOrder = $(this).val();
+                let $items = $('.category .item');
+
+                if (sortOrder === 'az') {
+                    $items.sort(function(a, b) {
+                        return $(a).find('h2').text().localeCompare($(b).find('h2').text());
+                    });
+                } else if (sortOrder === 'za') {
+                    $items.sort(function(a, b) {
+                        return $(b).find('h2').text().localeCompare($(a).find('h2').text());
+                    });
+                }
+                
+                $('.category').append($items);
+            });
+            let totalItems = 0;
+            let totalPrice = 0;
+            const standardPrice = 150; 
+            
+            $('.category').on('click', '.btn', function() {
+                let itemName = $(this).siblings('h2').text();
+                
+                totalItems++;
+                totalPrice += standardPrice;
+                $('#simple-checkout-btn').text(`Checkout ${totalItems} items (₹${totalPrice})`).fadeIn();
+            });
+            
+            $('#simple-checkout-btn').on('click', function() {
+                let confirmPayment = confirm(`Your total amount is ₹${totalPrice}.\n\nDo you want to proceed with the transaction?`);
+                
+                if (confirmPayment) {
+                    alert("Processing payment...");
+                    
+                    setTimeout(function() {
+                        alert("✅ Transaction Successful! Your food is being prepared.");
+                        totalItems = 0;
+                        totalPrice = 0;
+                        $('#simple-checkout-btn').fadeOut();
+                        
+                    }, 1000); 
+                } else {
+                    alert("❌ Transaction Cancelled.");
+                }
+            });
+        });
+    </script>
+</body> 
+</html>

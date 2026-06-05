@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Student Food Corner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #0f12df;">
+    <div class="header"></div>
+    <div id="header-placeholder"></div>
+    <div id="header-area"></div>
+
+    <main class="container my-5">
+        <div class="bg-white p-4 p-md-5 rounded shadow">
+            <div class="text-center mb-5">
+                <h2 class="page-title text-danger fw-bold">📞 Get in Touch</h2>
+                <p class="subtitle text-muted">Have a question about your order, our menu, or anything else? We're here to help!</p>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="contact-info-box bg-light p-4 rounded h-100 border">
+                        <h4 class="fw-bold mb-4">Contact Information</h4>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-geo-alt-fill text-danger fs-4 me-3"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Our Location</h6>
+                                <p class="text-muted mb-0">Student Union Building, Ground Floor<br>University Campus</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-envelope-fill text-danger fs-4 me-3"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email Us</h6>
+                                <p class="text-muted mb-0">support@studentfoodcorner.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-telephone-fill text-danger fs-4 me-3"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Call Us</h6>
+                                <p class="text-muted mb-0">+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <hr>      
+                        <h6 class="fw-bold mb-2">Operating Hours:</h6>
+                        <p class="text-muted small">
+                            Monday - Friday: 10:00 AM - 11:00 PM<br>
+                            Saturday - Sunday: 11:00 AM - 12:00 AM (Midnight)
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <form action="index.html" class="contact-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="userName" class="form-label fw-bold">Full Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control bg-light" id="userName" placeholder="John Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="userEmail" class="form-label fw-bold">Email Address <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control bg-light" id="userEmail" placeholder="john@student.edu" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="messageSubject" class="form-label fw-bold">Subject</label>
+                                <select class="form-select bg-light" id="messageSubject">
+                                    <option selected disabled>Select a topic...</option>
+                                    <option value="order">Order Issue / Delay</option>
+                                    <option value="menu">Menu Question</option>
+                                    <option value="feedback">General Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="userMessage" class="form-label fw-bold">Your Message <span class="text-danger">*</span></label>
+                                <textarea class="form-control bg-light" id="userMessage" rows="5" placeholder="How can we help you today?" required></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-danger w-100 py-3 fw-bold shadow-sm d-flex justify-content-center align-items-center gap-2">
+                                    <i class="bi bi-send-fill"></i> Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="footer"></div>
+    <div id="footer-placeholder"></div>
+    <div id="footer-area"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
