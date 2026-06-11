@@ -43,9 +43,14 @@ app.get("/about", (req, res) => {
 app.get("/signup-page", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/src/signup.html"));
 });
-app.get("show", async (req, res) => {
-    const users = await user_model.find();
-    res.json(users);
+app.get("/showusers", async (req, res) => {
+    try {
+        const users = await user_model.find({}, { password: 0 });
+        res.json(users);
+    } catch (error) {
+        console.error("Fetch Users Error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 });
 // --- API ENDPOINTS ---
 

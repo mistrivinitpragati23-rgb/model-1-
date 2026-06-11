@@ -4,6 +4,10 @@ import Footer from "./Footer";
 import Counter from "./Counter";
 import Registration from "./Registration";
 import ApiCalling from "./Apicalling"; 
+import ShowUsers from "./ShowUsers"; 
+import About from "./About";
+import Services from "./Services";
+import Contact from "./Contact";
 
 import { BrowserRouter, Routes, Route, Outlet, Link, useLocation } from 'react-router-dom';
 import "./App.css"; 
@@ -51,6 +55,13 @@ function Sidebar() {
           label="Register Form" 
           icon={
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          } 
+        />
+        <SidebarLink 
+          to="/showusers" 
+          label="Show Users" 
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v2"/><circle cx="11" cy="7" r="4"/><path d="M23 21v-2a3 3 0 0 0-3-3h-1"/><circle cx="20" cy="8" r="2"/></svg>
           } 
         />
       </div>
@@ -366,10 +377,13 @@ function App() {
               {/* Standalone Route: Counter Page */}
               <Route path="/counter" element={<Counter count={count} setCount={setCount} text={text} setText={setText} />} />
 
+              {/* Standalone Route: Registered Users from Database */}
+              <Route path="/showusers" element={<ShowUsers />} />
+
               {/* General Pages from Header */}
-              <Route path="/about" element={<InfoPage title="About Us" description="We are dedicated to building premium high-performance web applications." iconColor="primary" />} />
-              <Route path="/services" element={<InfoPage title="Our Services" description="Providing custom API integrations, dashboard controls, and database links." iconColor="accent" />} />
-              <Route path="/contact" element={<InfoPage title="Contact Us" description="Have questions? Reach out to our team at support@mywebsite.com" iconColor="warning" />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
 
           </main>

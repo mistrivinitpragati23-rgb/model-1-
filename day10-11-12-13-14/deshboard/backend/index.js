@@ -67,6 +67,17 @@ app.post("/signup", async (req, res) => {
     }
 });
 
+// GET Route to fetch all registered users
+app.get("/showusers", async (req, res) => {
+    try {
+        const users = await user_model.find({}, { password: 0 }); // Exclude passwords
+        res.status(200).json(users);
+    } catch (error) {
+        console.error("Fetch Users Error:", error);
+        res.status(500).json({ error: "Internal Server Error while fetching users" });
+    }
+});
+
 app.listen(5500, () => {
     console.log("🚀 Unified Full-Stack application running at http://localhost:5500");
 });

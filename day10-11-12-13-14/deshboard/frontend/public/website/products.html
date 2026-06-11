@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - FoodieHaven</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="header"></div>
+
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="page-title fw-bold">Our Full Menu</h1>
+            <p class="subtitle">Delicious chef-prepared meals crafted with fresh ingredients daily.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Item 1: Burger -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card product-card h-100 p-0 overflow-hidden border">
+                    <img src="images/burger.jpg" class="card-img-top" alt="Burger" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <span class="badge bg-danger mb-2 align-self-start">Bestseller</span>
+                        <h4 class="card-title fw-bold">Classic Burger</h4>
+                        <p class="card-text text-muted small flex-grow-1">A juicy beef patty with fresh lettuce, tomatoes, cheese, and our secret house sauce.</p>
+                        <h5 class="price text-success fw-bold mt-auto mb-3">₹150</h5>
+                        <button class="btn w-100 add-to-cart-btn" data-name="Classic Burger" data-price="150">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: Pizza -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card product-card h-100 p-0 overflow-hidden border">
+                    <img src="images/pizza.jpg" class="card-img-top" alt="Pizza" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <span class="badge bg-warning text-dark mb-2 align-self-start">Chef's Special</span>
+                        <h4 class="card-title fw-bold">Cheese Pizza</h4>
+                        <p class="card-text text-muted small flex-grow-1">Hand-tossed crust topped with rich marinara and a heavy blend of mozzarella cheese.</p>
+                        <h5 class="price text-success fw-bold mt-auto mb-3">₹250</h5>
+                        <button class="btn w-100 add-to-cart-btn" data-name="Cheese Pizza" data-price="250">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3: Salad -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card product-card h-100 p-0 overflow-hidden border">
+                    <img src="images/salad.jpg" class="card-img-top" alt="Salad" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <span class="badge bg-success mb-2 align-self-start">Healthy</span>
+                        <h4 class="card-title fw-bold">Greek Salad</h4>
+                        <p class="card-text text-muted small flex-grow-1">Crisp cucumbers, tomatoes, feta cheese, and olives tossed in a light vinaigrette.</p>
+                        <h5 class="price text-success fw-bold mt-auto mb-3">₹120</h5>
+                        <button class="btn w-100 add-to-cart-btn" data-name="Greek Salad" data-price="120">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: Dessert -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card product-card h-100 p-0 overflow-hidden border">
+                    <img src="images/cake.webp" class="card-img-top" alt="Dessert" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <span class="badge bg-info text-dark mb-2 align-self-start">Sweet</span>
+                        <h4 class="card-title fw-bold">Chocolate Donut</h4>
+                        <p class="card-text text-muted small flex-grow-1">Freshly baked soft donut covered in a rich, glossy dark chocolate glaze.</p>
+                        <h5 class="price text-success fw-bold mt-auto mb-3">₹80</h5>
+                        <button class="btn w-100 add-to-cart-btn" data-name="Chocolate Donut" data-price="80">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5: Pasta (FIXED unclosed elements) -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card product-card h-100 p-0 overflow-hidden border">
+                    <img src="images/red-sauce-pasta-1.webp" class="card-img-top" alt="Pasta" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <span class="badge bg-secondary mb-2 align-self-start">Classic</span>
+                        <h4 class="card-title fw-bold">Spaghetti Bolognese</h4> 
+                        <p class="card-text text-muted small flex-grow-1">Traditional Italian pasta with a rich meat sauce made from tomatoes, beef, and herbs.</p>
+                        <h5 class="price text-success fw-bold mt-auto mb-3">₹200</h5>
+                        <button class="btn w-100 add-to-cart-btn" data-name="Spaghetti Bolognese" data-price="200">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6: Soup -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card product-card h-100 p-0 overflow-hidden border">
+                    <img src="images/soup.webp" class="card-img-top" alt="Soup" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <span class="badge bg-secondary mb-2 align-self-start">Comfort Food</span>
+                        <h4 class="card-title fw-bold">Tomato Soup</h4>
+                        <p class="card-text text-muted small flex-grow-1">Creamy tomato soup made with ripe tomatoes, garlic, and a hint of basil, perfect for any season.</p>
+                        <h5 class="price text-success fw-bold mt-auto mb-3">₹110</h5>
+                        <button class="btn w-100 add-to-cart-btn" data-name="Tomato Soup" data-price="110">Add to Cart</button>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </main>
+
+    <!-- Floating Cart triggers the Checkout page transition -->
+    <button id="floating-cart" class="btn text-white position-fixed bottom-0 end-0 m-4 shadow-lg" style="border-radius: 30px; display: none; z-index: 1000; padding: 15px 30px; font-size: 1.1rem; background: linear-gradient(135deg, #ff4757, #ff6b81);">
+        🛒 Checkout (<span id="cart-count">0</span> items) - ₹<span id="cart-total-btn">0.00</span>
+    </button>
+
+    <div class="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

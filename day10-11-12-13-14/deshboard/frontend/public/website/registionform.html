@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account - FoodieHaven</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="header"></div>
+
+    <main class="container">
+        <div class="login-wrapper">
+            <!-- Left Branding Side -->
+            <div class="login-image-side">
+                <h2>Join FoodieHaven</h2>
+                <p>Register now to start ordering delicious meals, earn member reward points, and track shipments live.</p>
+            </div>
+            
+            <!-- Right Form Side -->
+            <div class="login-form-side">
+                <h2 class="text-center fw-bold mb-4">Create an Account</h2>
+                
+                <form action="login.html" onsubmit="alert('Registration Successful! Please log in with your credentials.');">
+                    <div class="input-group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" placeholder="John Doe" required class="full-width-input">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reg-email">Email Address</label>
+                        <input type="email" id="reg-email" placeholder="student@example.com" required class="full-width-input">
+                    </div>                   
+                    
+                    <div class="input-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" placeholder="Create a strong password" required class="full-width-input">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-hom w-100 py-3 mt-2 fs-5" style="border-radius: 30px;">
+                        Register Account
+                    </button>
+                </form>
+
+                <p class="register-prompt">
+                    Already have an account? <br>
+                    <a href="login.html" class="fw-bold">Click here to Login</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
